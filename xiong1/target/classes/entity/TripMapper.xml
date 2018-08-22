@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="dao.TripDAO">
+	<select id="find" resultType="entity.Trip">
+		select * from trip
+	</select>
+	<select id="findByPage"  resultType="entity.Trip" >
+		select s.rn,s.id,s.name from(select ROWNUM RN, ID,NAME from TRIP)s
+		<where> 
+			<![CDATA[s.rn >= #{0}]]>
+			and <![CDATA[s.rn <#{1}]]>
+		</where>
+
+		
+			
+		
+	</select>
+</mapper>
